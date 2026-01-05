@@ -1,3 +1,7 @@
+def file_read(file_path):
+    with open(file_path) as file:
+        return file.read()
+
 def number_of_words(text):
     words = text.split()
     return len(words)

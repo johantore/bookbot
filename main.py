@@ -1,20 +1,23 @@
+import sys
+
 from stats import (
-    number_of_words, 
-    char_count, 
-    char_sort
+    number_of_words,
+    char_count,
+    char_sort,
+    file_read
 )
 
+if len(sys.argv) < 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+
 def main():
-    file_path = "books/frankenstein.txt"
-    text = get_book_text(file_path)
+    file_path = sys.argv[1]
+    text = file_read(file_path)
     word_count = number_of_words(text)
     char_dict = char_count(text)
     char_list_sorted = char_sort(char_dict)
     print_report(file_path, word_count, char_list_sorted)
-
-def get_book_text(file_path):
-    with open(file_path) as file:
-        return file.read()
 
 def print_report(file_path, word_count, char_list_sorted):
     print("============ BOOKBOT ============")
